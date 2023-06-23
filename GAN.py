@@ -101,7 +101,30 @@ train_dataset = tf.data.Dataset.from_tensor_slices(train_images).shuffle(buffer_
 epochs = 10
 train(train_dataset, epochs)
 
-# Generate and display new images
-num_examples_to_generate = 16
-random_vector_for_generation = tf.random.normal([num_examples_to_generate, 100])
-generate_images(generator, random_vector_for_generation)
+
+
+
+# Project Description: Generative Adversarial Network (GAN) for Image Generation
+
+# This project utilizes a Generative Adversarial Network (GAN) architecture to generate realistic images that resemble the MNIST dataset of handwritten digits. The GAN consists of two main components: a generator and a discriminator.
+
+# The generator model is responsible for generating synthetic images from random noise. It comprises multiple layers of dense and batch normalization units, followed by activation functions such as LeakyReLU and a final tanh activation. The generated images are reshaped to match the dimensions of the MNIST dataset.
+
+# The discriminator model acts as a binary classifier, distinguishing between real and generated images. It takes in input images, either real or synthetic, and processes them through layers of flattening, dense, batch normalization, and LeakyReLU units. The final output is a single neuron representing the probability of the input being a real image.
+
+# During the training process, the generator and discriminator models are alternately optimized. The generator aims to generate images that fool the discriminator, while the discriminator aims to correctly classify real and generated images. The loss functions used are binary cross-entropy, and the Adam optimizer is employed for both models.
+
+# The training loop runs for a specified number of epochs, iterating through the MNIST dataset in batches. In each training step, random noise is passed through the generator to produce synthetic images. The discriminator then evaluates both real and generated images, and the gradients of the generator and discriminator losses are computed. These gradients are used to update the trainable variables of their respective models via the optimizer.
+
+# Once the GAN is trained, the generate_images() function can be used to produce new images. It takes a random input vector and passes it through the generator to generate a set of synthetic images. These generated images are then displayed using matplotlib.
+
+# The MNIST dataset is loaded, preprocessed, and split into a training set. The images are normalized to a range of -1 to 1. The dataset is shuffled, and a batch size is defined for efficient training.
+
+# To execute the project, the train() function is called with the prepared training dataset and the desired number of epochs. After training, the generate_images() function is invoked with a random input vector to generate a set of new images that resemble handwritten digits. These images are displayed using matplotlib.
+
+# This project showcases the power of GANs in generating realistic images and demonstrates their potential applications in various fields such as computer vision, creative art, and data augmentation.
+
+# # Generate and display new images
+# num_examples_to_generate = 16
+# random_vector_for_generation = tf.random.normal([num_examples_to_generate, 100])
+# generate_images(generator, random_vector_for_generation)
